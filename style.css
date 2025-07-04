@@ -1879,6 +1879,27 @@ footer {
         padding: 2rem 1.5rem;
     }
 }
+@media (max-width: 768px) {
+  /* transforme les deux colonnes en une seule */
+  .two-columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* décale un peu le bloc image sous le texte */
+  .illustration-block {
+    padding-left: 0; 
+    border-left: none;
+  }
+
+  /* s’assure que l’image prenne toute la largeur */
+  .roman-illustration {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
 /* Forcer l’espacement sous le sous-titre */
 .hero-subtitle {
   display: block !important;
