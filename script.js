@@ -286,53 +286,29 @@ document.head.appendChild(lightboxStyle);
     animateOnScroll(document.querySelectorAll('.menu-item, .gallery-item, .ambiance-item'), 'animate-in');
     
     // Hero title animation
-const heroTitle = document.querySelector('.giant-title');
-if (heroTitle) {
-    const text = heroTitle.textContent;
-    heroTitle.textContent = '';
-    
+// Animation des lignes du titre Roma Nostra
+const heroTitleLines = document.querySelectorAll('.title-line');
+if (heroTitleLines.length) {
+  heroTitleLines.forEach((line, lineIndex) => {
+    // On récupère le texte initial
+    const text = line.textContent;
+    line.textContent = '';
+
+    // Pour chaque caractère, on crée un span
     text.split('').forEach((char, i) => {
-        const span = document.createElement('span');
-        span.textContent = char;
-        span.style.opacity = '0';
-        span.style.transform = 'translateY(20px)';
-        span.style.display = 'inline-block';
-        span.style.transition = `all 0.5s ease ${i * 0.05 + 0.3}s`; // Ajout d'un délai de 0.3s
-        heroTitle.appendChild(span);
-        
-        setTimeout(() => {
-            span.style.opacity = '1';
-            span.style.transform = 'translateY(0)';
-        }, 700); // Augmenté de 500ms à 700ms
+      const span = document.createElement('span');
+      span.textContent = char === ' ' ? '\u00A0' : char;
+      span.style.display = 'inline-block';
+      span.style.opacity = '0';
+      span.style.transform = 'translateY(20px)';
+      span.style.transition = `all 0.5s ease ${(lineIndex * 0.3) + (i * 0.05)}s`;
+      line.appendChild(span);
+
+      // Animation
+      setTimeout(() => {
+        span.style.opacity = '1';
+        span.style.transform = 'translateY(0)';
+      }, 700);
     });
+  });
 }
-    
-    // Add keyframes dynamically
-    const styleSheet = document.createElement('style');
-    styleSheet.textContent = `
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        .animate-in {
-            animation: fadeIn 0.8s ease forwards;
-        }
-    `;
-    document.head.appendChild(styleSheet);
-});
