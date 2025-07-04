@@ -394,13 +394,13 @@ ul {
     display: inline-block; /* Permet un ajustement naturel */
     padding: 0 1rem; /* Espacement latéral si nécessaire */
 }
- @media (max-width: 768px) {
-        font-size: clamp(2.5rem, 12vw, 4rem); /* Taille réduite pour mobile */
-        letter-spacing: 2px; /* Espacement réduit */
-        line-height: 1.2; /* Meilleure lisibilité */
+    @media (max-width: 480px) {
+        white-space: normal; /* Autorise le retour à la ligne */
+        word-break: keep-all; /* Empêche la césure des mots */
+        display: block;
+        line-height: 1.3;
     }
 }
-
 /* Étoiles repositionnées pour ne pas dépasser */
 .giant-title::before,
 .giant-title::after {
