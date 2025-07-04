@@ -1,0 +1,324 @@
+/* Variables (assurez-vous qu'elles sont définies dans votre style.css principal) */
+:root {
+    --primary: #d32f2f;
+    --primary-dark: #9a0007;
+    --secondary: #f5f5f5;
+    --dark: #212121;
+    --gray: #6c757d;
+    --gray-light: #f8f9fa;
+    --white: #fff;
+    --font-title: 'Playfair Display', serif;
+    --font-cursive: 'Dancing Script', cursive;
+    --font-text: 'Roboto', sans-serif;
+    --shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    --shadow-hover: 0 12px 24px rgba(0, 0, 0, 0.25);
+    --transition: all 0.3s ease;
+}
+
+/* Blog Header */
+.blog-header {
+    position: relative;
+    height: 70vh;
+    background: url('https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80') no-repeat center/cover;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(211, 47, 47, 0.4), rgba(0, 0, 0, 0.5));
+    z-index: 1;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    color: var(--white);
+    padding: 2rem;
+    opacity: 0;
+    animation: fadeInDown 1.5s ease forwards;
+}
+
+.blog-title {
+    font-family: var(--font-cursive);
+    font-size: clamp(3rem, 7vw, 5rem);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.blog-subtitle {
+    font-family: var(--font-title);
+    font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+    font-style: italic;
+    opacity: 0.85;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Blog Content */
+.blog-content {
+    max-width: 1300px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 4rem;
+    background: var(--white);
+}
+
+.blog-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.blog-post {
+    position: relative;
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    opacity: 0;
+}
+
+.blog-post.visible {
+    opacity: 1;
+    animation: slideUpBlog 0.8s ease forwards;
+}
+
+.blog-post:hover {
+    transform: translateY(-15px);
+    box-shadow: var(--shadow-hover);
+}
+
+.post-image {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+    border-bottom: 4px solid var(--primary);
+}
+
+.post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.blog-post:hover .post-image img {
+    transform: scale(1.08);
+}
+
+.post-date {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--primary);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    font-style: italic;
+    box-shadow: var(--shadow);
+    transition: transform 0.4s ease;
+}
+
+.blog-post:hover .post-date {
+    transform: scale(1.1);
+}
+
+.post-content {
+    padding: 2.5rem;
+    position: relative;
+}
+
+.post-content h2 {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    color: var(--dark);
+    margin-bottom: 1.2rem;
+    line-height: 1.3;
+}
+
+.post-excerpt {
+    color: var(--gray);
+    font-family: var(--font-text);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.read-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: var(--primary);
+    font-family: var(--font-cursive);
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: lowercase;
+    transition: gap 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.read-more-btn:hover {
+    color: var(--primary-dark);
+    gap: 1.2rem;
+    transform: translateX(5px);
+}
+
+.read-more-btn i {
+    font-size: 1rem;
+}
+
+/* Sidebar */
+.blog-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.sidebar-widget {
+    background: var(--secondary);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--primary);
+    transition: transform 0.4s ease;
+    opacity: 0;
+}
+
+.sidebar-widget.visible {
+    opacity: 1;
+    animation: fadeInRight 0.8s ease forwards;
+}
+
+.sidebar-widget:hover {
+    transform: translateY(-5px);
+}
+
+.widget-title {
+    font-family: var(--font-title);
+    font-size: 1.7rem;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.widget-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary), transparent);
+    margin-top: 0.5rem;
+}
+
+.sidebar-widget p {
+    color: var(--gray);
+    font-family: var(--font-text);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.categories a {
+    color: var(--dark);
+    font-family: var(--font-text);
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.categories a:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+/* Animations */
+@keyframes slideUpBlog {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInRight {
+    from { transform: translateX(20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .blog-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .blog-sidebar {
+        margin-top: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-header {
+        height: 50vh;
+    }
+    
+    .blog-title {
+        font-size: 2.8rem;
+    }
+    
+    .blog-subtitle {
+        font-size: 1.4rem;
+    }
+    
+    .post-image {
+        height: 250px;
+    }
+    
+    .post-content h2 {
+        font-size: 1.6rem;
+    }
+    
+    .post-excerpt {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .blog-header {
+        height: 40vh;
+    }
+    
+    .blog-title {
+        font-size: 2.2rem;
+    }
+    
+    .blog-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .post-content {
+        padding: 1.5rem;
+    }
+}
