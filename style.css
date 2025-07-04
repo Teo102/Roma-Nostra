@@ -387,7 +387,9 @@ ul {
     margin: 2rem ; /* Réduit la marge */ /* Espacement fixe après le titre */
     display: block;
     width: 100%;
-
+    word-break: keep-all;
+    hyphens: none;
+    overflow-wrap: normal;
 }
 
 /* Étoiles repositionnées pour ne pas dépasser */
