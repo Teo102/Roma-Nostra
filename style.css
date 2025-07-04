@@ -377,32 +377,32 @@ ul {
     font-weight: 700;
     letter-spacing: 4px;
     line-height: 1.1;
-    font-family: var(--font-title);
     color: var(--white);
     text-shadow: 
         0 0 20px rgba(196, 164, 132, 0.5),
         0 5px 15px rgba(0, 0, 0, 0.5),
         0 10px 30px rgba(0, 0, 0, 0.3);
-    position: relative;
-    margin: 2rem ; /* Réduit la marge */ /* Espacement fixe après le titre */
-    display: block;
-    width: 100%;
-    word-break: keep-all;
-    hyphens: none;
-    overflow-wrap: normal;
-    white-space: nowrap; /* Empêche tout saut de ligne */
-    display: inline-block; /* Permet un ajustement naturel */
-    padding: 0 1rem; /* Espacement latéral si nécessaire */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
 }
-    @media (max-width: 480px) {
-        white-space: normal; /* Autorise le retour à la ligne */
-        word-break: keep-all; /* Empêche la césure des mots */
-        display: block;
-        line-height: 1.3;
+
+.title-line {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* Adaptation mobile */
+@media (max-width: 768px) {
+    .giant-title {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+        line-height: 1.2;
     }
 }
-/* Étoiles repositionnées pour ne pas dépasser */
-.giant-title::before,
+
+/* Conservez vos styles existants pour ::before et ::after */
+.giant-title::before, 
 .giant-title::after {
     content: '✧';
     position: absolute;
