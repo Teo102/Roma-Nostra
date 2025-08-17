@@ -41,8 +41,9 @@ html {
 
 body {
     font-family: var(--font-text);
+    color: var(--dark);
     line-height: 1.6;
-    background-color: red;
+    background-color: var(--light);
     overflow-x: hidden;
 }
 
@@ -1926,4 +1927,5 @@ footer {
 .suppliers-grid .supplier-card:not(:first-child) {
   display: none !important;
 }
+
 
