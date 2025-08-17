@@ -102,11 +102,9 @@ ul {
 }
 
 .btn-reserve {
-    background: linear-gradient(135deg, var(--gold), #d4a017);
-    color: var(--dark);
-    border: none;
-    padding: 1.2rem 2.5rem;
-    box-shadow: 0 4px 15px rgba(196, 164, 132, 0.4);
+   background: #D92A2A;         /* ou background-color: #D92A2A; */
+   background-image: none;
+   animation: none;
 }
 
 .btn-reserve:hover {
@@ -1927,5 +1925,6 @@ footer {
 .suppliers-grid .supplier-card:not(:first-child) {
   display: none !important;
 }
+
 
 
